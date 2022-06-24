@@ -1,0 +1,75 @@
+{
+  "hosting": {
+    "amplifyhosting": {
+      "service": "amplifyhosting",
+      "providerPlugin": "awscloudformation",
+      "type": "manual"
+    }
+  },
+  "auth": {
+    "amplifycloudwatchrumauth": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      }
+    }
+  },
+  "function": {
+    "cfncustomfn": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "custom": {
+    "cloudwatchrum": {
+      "service": "customCDK",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "amplifycloudwatchrumauth",
+          "attributes": [
+            "IdentityPoolId",
+            "IdentityPoolName",
+            "UserPoolId",
+            "UserPoolArn",
+            "UserPoolName",
+            "AppClientIDWeb",
+            "AppClientID"
+          ]
+        },
+        {
+          "category": "function",
+          "resourceName": "cfncustomfn",
+          "attributes": [
+            "Name",
+            "Arn",
+            "Region",
+            "LambdaExecutionRole"
+          ]
+        }
+      ]
+    }
+  }
+}
