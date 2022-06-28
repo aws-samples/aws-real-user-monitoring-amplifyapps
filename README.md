@@ -59,7 +59,7 @@ Would become this:
 ```ts
 // Replace AWS Region and Account ID (https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html)
 // of your Amplify project, as well as the correct project’s name and environment.
-Resource: "arn:aws:rum:eu-west-1:123456789101:appmonitor/app-monitor-awsrealusermonitor-dev",
+Resource: "arn:aws:rum:eu-west-1:123456789012:appmonitor/app-monitor-awsrealusermonitor-dev",
 ```
 
 Next, open the `amplify/backend/function/cfncustomfn/custom-policies.json` file and replace repeat the same steps as above for the Resource ARN value. In this specific instance you can skip the `${env}` value as Amplify CLI will take care of interpolate it for us.
