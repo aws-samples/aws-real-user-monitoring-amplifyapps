@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "amplifycloudwatchrum850ab5d6_identitypool_850ab5d6",
+    "identityPoolName": "awsrealusermonitord05c6303_identitypool_d05c6303",
     "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "amplif850ab5d6",
-    "userPoolName": "amplifycloudwatchrum850ab5d6_userpool_850ab5d6",
+    "resourceNameTruncated": "awsread05c6303",
+    "userPoolName": "awsrealusermonitord05c6303_userpool_d05c6303",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -31,9 +31,9 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "amplif850ab5d6_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "amplifd05c6303_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "850ab5d6",
+    "sharedId": "d05c6303",
     "resourceName": "amplifycloudwatchrumauth",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "manual",

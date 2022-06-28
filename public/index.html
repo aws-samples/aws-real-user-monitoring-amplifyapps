@@ -1,66 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-    <script>
-      (function (n, i, v, r, s, c, x, z) {
-       x = window.AwsRumClient = { q: [], n: n, i: i, v: v, r: r, c: c };
-       window[n] = function (c, p) { x.q.push({ c: c, p: p }); };
-       z = document.createElement('script');
-       z.async = true; z.src = s;
-       document.head.insertBefore(z, document.head.getElementsByTagName('script')[0]);
-      })(
-       'cwr',
-       '655ff6ad-1142-4447-aedf-e2ffb3934023', // Replace this with appMonitorId
-       '1.0.0',
-       'eu-central-1', // Replace this with awsRegion
-       'https://client.rum.us-east-1.amazonaws.com/1.2.1/cwr.js',
-      {
-         sessionSampleRate: 1,
-         guestRoleArn: "arn:aws:iam::692587020486:role/amplify-amplifycloudwatchrum-unauthRole", // Replace this with appMonitorGuestRoleArn
-         identityPoolId: "eu-central-1:3457832d-0211-4d39-ab62-9f183d2b2c41",  // Replace this with appMonitoridentityPoolId
-         endpoint: "https://dataplane.rum.eu-central-1.amazonaws.com", // Replace this with awsRegion
-         telemetries: ["performance", "errors", "http"],
-         allowCookies: true,
-         enableXRay: true
-      });
-     </script>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <title>Amazon CloudWatch RUM x AWS Amplify</title>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+  <!-- Insert CloudWatch RUM script tag here -->
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+</body>
+
 </html>
