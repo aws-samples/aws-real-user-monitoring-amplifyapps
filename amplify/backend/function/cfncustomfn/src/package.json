@@ -8,6 +8,6 @@
     "@types/aws-lambda": "^8.10.92"
   },
   "dependencies": {
-    "@aws-lambda-powertools/logger": "^0.11.0"
+    "@aws-lambda-powertools/logger": "^0.11.1-rc.0"
   }
 }

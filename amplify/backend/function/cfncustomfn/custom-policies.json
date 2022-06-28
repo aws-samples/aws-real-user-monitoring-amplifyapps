@@ -4,7 +4,7 @@
       "rum:GetAppMonitor"
     ],
     "Resource": [
-      "arn:aws:rum:eu-central-1:692587020486:appmonitor/app-monitor-amplifycloudwatchrum-${env}"
+      "arn:aws:rum:[aws-region]:[aws-account-id]:appmonitor/app-monitor-[amplify-project-name]-${env}"
     ]
   }
 ]

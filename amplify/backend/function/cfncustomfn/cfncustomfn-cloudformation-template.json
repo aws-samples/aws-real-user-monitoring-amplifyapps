@@ -89,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "amplifycloudwatchrumLambdaRole59576bfe",
+            "awsrealusermonitorLambdaRole46fa22e3",
             {
               "Fn::Join": [
                 "",
                 [
-                  "amplifycloudwatchrumLambdaRole59576bfe",
+                  "awsrealusermonitorLambdaRole46fa22e3",
                   "-",
                   {
                     "Ref": "env"
@@ -179,7 +179,7 @@
               "Resource": [
                 {
                   "Fn::Sub": [
-                    "arn:aws:rum:eu-central-1:692587020486:appmonitor/app-monitor-amplifycloudwatchrum-${env}",
+                    "arn:aws:rum:eu-west-1:536254204126:appmonitor/app-monitor-awsrealusermonitor-${env}",
                     {
                       "env": {
                         "Ref": "env"
