@@ -3,8 +3,8 @@
     "Action": [
       "rum:GetAppMonitor"
     ],
-    "Resource": [
-      "arn:aws:rum:[aws-region]:[aws-account-id]:appmonitor/app-monitor-[amplify-project-name]-${env}"
-    ]
+    "Resource": {
+      "Fn::Sub": "arn:aws:rum:${AWS::Region}:${AWS::AccountId}:appmonitor/app-monitor-awsrealusermonitor-dev"
+    }
   }
 ]

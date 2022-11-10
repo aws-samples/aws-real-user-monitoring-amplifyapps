@@ -7,7 +7,8 @@ export type AmplifyDependentResourcesAttributes = {
             "UserPoolArn": "string",
             "UserPoolName": "string",
             "AppClientIDWeb": "string",
-            "AppClientID": "string"
+            "AppClientID": "string",
+            "CreatedSNSRole": "string"
         }
     },
     "function": {
@@ -16,14 +17,6 @@ export type AmplifyDependentResourcesAttributes = {
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
-        }
-    },
-    "custom": {
-        "cloudwatchrum": {
-            "AppMonitorName": "string",
-            "AppMonitorId": "string",
-            "GuestRoleArn": "string",
-            "IdentityPoolId": "string"
         }
     }
 }

@@ -18,10 +18,11 @@ export function override(resources: AmplifyRootStackTemplate) {
         Statement: [
           {
             Effect: "Allow",
-            // Replace AWS Region and Account ID (https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html)
-            // of your Amplify project, as well as the correct project’s name and environment.
-            Resource:
-              "arn:aws:rum:[aws-region]:[aws-account-id]:appmonitor/app-monitor-[amplify-project-name]-[env]",
+            Resource: {
+              "Fn::Sub":
+                // eslint-disable-next-line no-template-curly-in-string
+                "arn:aws:rum:${AWS::Region}:${AWS::AccountId}:appmonitor/app-monitor-awsrealusermonitor-dev",
+            },
             Action: ["rum:PutRumEvents"],
           },
         ],
@@ -46,10 +47,10 @@ export function override(resources: AmplifyRootStackTemplate) {
         Statement: [
           {
             Effect: "Allow",
-            // Replace AWS Region and Account ID (https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html)
-            // of your Amplify project, as well as the correct project’s name and environment.
-            Resource:
-              "arn:aws:rum:[aws-region]:[aws-account-id]:appmonitor/app-monitor-[amplify-project-name]-[env]",
+            // eslint-disable-next-line no-template-curly-in-string
+            Resource: {
+              "Fn::Sub": "arn:aws:rum:${AWS::Region}:${AWS::AccountId}:appmonitor/app-monitor-awsrealusermonitor-dev",
+            },
             Action: ["rum:PutRumEvents"],
           },
         ],
