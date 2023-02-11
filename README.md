@@ -162,7 +162,7 @@ After reloading the page a few times, go check out the CloudWatch RUM console in
 
 ## Create your own app
 
-If you want to create your own app, please follow the steps described in [the blog post](ADD BLOG POST LINK HERE).
+If you want to create your own app, please follow the steps described in [the blog post](https://aws.amazon.com/blogs/mobile/implementing-real-user-monitoring-of-amplify-application-using-amazon-cloudwatch-rum/).
 
 ## Additional resources
 
