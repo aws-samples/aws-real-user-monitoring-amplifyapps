@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "{\"createdOn\":\"Mac\",\"createdBy\":\"Amplify\",\"createdWith\":\"9.0.0\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
+  "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"Amplify\",\"createdWith\":\"11.0.3\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
   "Parameters": {
     "CloudWatchRule": {
       "Type": "String",
@@ -78,7 +78,7 @@
             "Arn"
           ]
         },
-        "Runtime": "nodejs14.x",
+        "Runtime": "nodejs16.x",
         "Layers": [],
         "Timeout": 25
       }
@@ -89,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "awsrealusermonitorLambdaRole46fa22e3",
+            "awsrealusermonitorinLambdaRole1b56e6cb",
             {
               "Fn::Join": [
                 "",
                 [
-                  "awsrealusermonitorLambdaRole46fa22e3",
+                  "awsrealusermonitorinLambdaRole1b56e6cb",
                   "-",
                   {
                     "Ref": "env"
@@ -178,14 +178,7 @@
               ],
               "Resource": [
                 {
-                  "Fn::Sub": [
-                    "arn:aws:rum:eu-west-1:536254204126:appmonitor/app-monitor-awsrealusermonitor-${env}",
-                    {
-                      "env": {
-                        "Ref": "env"
-                      }
-                    }
-                  ]
+                  "Fn::Sub": "arn:aws:rum:${AWS::Region}:${AWS::AccountId}:appmonitor/*"
                 }
               ],
               "Effect": "Allow"
@@ -223,6 +216,14 @@
     "LambdaExecutionRole": {
       "Value": {
         "Ref": "LambdaExecutionRole"
+      }
+    },
+    "LambdaExecutionRoleArn": {
+      "Value": {
+        "Fn::GetAtt": [
+          "LambdaExecutionRole",
+          "Arn"
+        ]
       }
     }
   }

@@ -4,7 +4,9 @@
       "rum:GetAppMonitor"
     ],
     "Resource": [
-      "arn:aws:rum:[aws-region]:[aws-account-id]:appmonitor/app-monitor-[amplify-project-name]-${env}"
+      {
+        "Fn::Sub": "arn:aws:rum:${AWS::Region}:${AWS::AccountId}:appmonitor/*"
+      }
     ]
   }
 ]

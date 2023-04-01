@@ -2,7 +2,7 @@
 
 When you launch a web application to users globally, you want to be able to monitor the experience of your end users as they interact with the application. The end users can be accessing the application with different browsers, geographic locations, connectivity and so forth which can lead to varied user experiences.
 
-During re:invent 2021, AWS announced [Amazon CloudWatch Real-User Monitoring](https://aws.amazon.com/blogs/aws/cloudwatch-rum/) (RUM) for web applications. The CloudWatch RUM service enables you to collect, view, and analyze client-side data about your web application performance from actual user sessions in near real time. Application Developers and DevOps engineers can use this data to quickly identify and debug client-side issues to optimize end user experience. To get started, you simply generate a JavaScript snippet for your application by creating a RUM app monitor. This snippet is added to the header section in the HTML of your application. As users interact with your application, the RUM web client will collect and send data about the session to CloudWatch RUM for visualization and analysis.
+During re:Invent 2021, AWS announced [Amazon CloudWatch Real-User Monitoring](https://aws.amazon.com/blogs/aws/cloudwatch-rum/) (RUM) for web applications. The CloudWatch RUM service enables you to collect, view, and analyze client-side data about your web application performance from actual user sessions in near real time. Application Developers and DevOps engineers can use this data to quickly identify and debug client-side issues to optimize end user experience. To get started, you simply generate a JavaScript snippet for your application by creating a RUM app monitor. This snippet is added to the header section in the HTML of your application. As users interact with your application, the RUM web client will collect and send data about the session to CloudWatch RUM for visualization and analysis.
 
 <!-- This repository accompanies a blog post that details how to implement Real User Monitoring of Amplify Application using CloudWatch RUM, [read the full post here on the AWS Blog](ADD BLOG POST LINK HERE)! -->
 
@@ -27,7 +27,7 @@ You can choose to try the setup described in the repository and blog post by eit
 As a first step, open a new terminal window in the project's root after cloning the repo, and then run the following command to install the application's dependencies:
 
 ```sh
-npm i
+npm ci
 ```
 
 ### Step 2: Initialize Amplify app
@@ -38,37 +38,7 @@ Next, while still in the project's root directory, run the following command to 
 amplify init
 ```
 
-### Step 3: Update the configuration files
-
-Some of the Amplify-managed resources need to be configured to work with your AWS Account and Region. Before starting to edit the configuration files, make sure to obtain your AWS Account ID and the AWS Region name that you want to use. You can retrieve these values from the [AWS Management Console](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html). Alternatively, you can also run `aws sts get-caller-identity` and retrieve the Account ID using the AWS CLI.
-
-In addition to the values you just retrieved you also need to use the name of the Amplify project and environment that you specified when you initialized the Amplify app in the previous step.
-
-Once you have the two values, start by opening the `amplify/backend/awscloudformation/override.ts` file using your favorite text editor and replace both instances of the placeholder values (example shown below) with your own values.
-
-For example, this:
-
-```ts
-// Replace AWS Region and Account ID (https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html)
-// of your Amplify project, as well as the correct project’s name and environment.
-Resource: "arn:aws:rum:[aws-region]:[aws-account-id]:appmonitor/app-monitor-[amplify-project-name]-[amplify-env]",
-```
-
-Would become this:
-
-```ts
-// Replace AWS Region and Account ID (https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html)
-// of your Amplify project, as well as the correct project’s name and environment.
-Resource: "arn:aws:rum:eu-west-1:123456789012:appmonitor/app-monitor-awsrealusermonitor-dev",
-```
-
-Next, open the `amplify/backend/function/cfncustomfn/custom-policies.json` file and replace repeat the same steps as above for the Resource ARN value. In this specific instance you can skip the `${env}` value as Amplify CLI will take care of interpolate it for us.
-
-```json
-"arn:aws:rum:[aws-region]:[aws-account-id]:appmonitor/app-monitor-[amplify-project-name]-${env}"
-```
-
-### Step 4: Deploy the AWS resources
+### Step 3: Deploy the AWS resources
 
 Now that you have configured the Amplify app, you can deploy the AWS resources by running the following command:
 
@@ -79,7 +49,7 @@ amplify publish
 > Note
 > In the command above we are using `publish` instead of `push` because we want to make sure that the Amplify app is properly deployed to Amplify Hosting and an URL is generated.
 
-### Step 5: Set the Amplify Hosting URL as domain for CloudWatch RUM
+### Step 4: Set the Amplify Hosting URL as domain for CloudWatch RUM
 
 As output of the previous step, you should have a new URL that you can use to access your Amplify app. This URL will be used by the CloudWatch RUM service to collect data about your application. We need to update the CDK template for the CloudWatch RUM resources to use this URL.
 
@@ -91,7 +61,7 @@ domain: "dev.xXxxXXxxxxxxxx.amplifyapp.com",
 
 Then run `amplify push -y` once again to deploy the resources.
 
-### Step 6: Add the CloudWatch RUM JavaScript snippet to your application
+### Step 5: Add the CloudWatch RUM JavaScript snippet to your application
 
 After running the previous command the `post-push.js` script present in the `amplify/hooks/` folder should have been run. This script retrieves all the configurations that were generated by the Amplify CLI and then outputs them in the console so that you can copy and add them to the JavaScript snippet to the header of the HTML of the application.
 
@@ -107,7 +77,7 @@ awsRegion eu-west-1
 ----- 🪝 post-push execution end -----
 ```
 
-Open the `public/index.html` file and add the following JavaScript snippet to the header of the HTML of your application:
+Open the `index.html` file and add the following JavaScript snippet to the header of the HTML of your application:
 
 ```html
 <script>
@@ -144,7 +114,7 @@ Open the `public/index.html` file and add the following JavaScript snippet to th
 
 While you are at it, make sure to replace all the placeholder values with the values that were generated by the Amplify CLI.
 
-### Step 7: Deploy the React app to Amplify Hosting
+### Step 6: Deploy the React app to Amplify Hosting
 
 Now that all the pieces are in place, run the following command to deploy the application to Amplify Hosting:
 
@@ -154,11 +124,11 @@ amplify publish -y
 
 If everything went well, you should see in the terminal the url of your Amplify Hosting application. When visiting it you should see the application load successfully.
 
-![App Screen](public/app.png)
+![App Screen](assets/app.png)
 
 After reloading the page a few times, go check out the CloudWatch RUM console in the AWS Management Console and see if you see any new telemetry data.
 
-![CloudWatch RUM Console](public/console.jpg)
+![CloudWatch RUM Console](assets/console.jpg)
 
 ## Create your own app
 
@@ -166,7 +136,7 @@ If you want to create your own app, please follow the steps described in [the bl
 
 ## Additional resources
 
-In case you want to avoid having to copy and paste the JavaScript snippet and the values (Step 6), you can use the alternative `post-push.js` hook found in the `amplify/hooks/` folder. This file will be run after each `amplify push` command and will **overwrite** the content of the `public/index.html` file with the values that were generated by the Amplify CLI.
+In case you want to avoid having to copy and paste the JavaScript snippet and the values (Step 6), you can use the alternative `post-push.js` hook found in the `amplify/hooks/` folder. This file will be run after each `amplify push` command and will **overwrite** the content of the `index.html` file with the values that were generated by the Amplify CLI.
 
 ## Security
 

@@ -1,11 +1,12 @@
-import * as cdk from "@aws-cdk/core";
+import * as cdk from "aws-cdk-lib";
 import * as AmplifyHelpers from "@aws-amplify/cli-extensibility-helper";
 import { AmplifyDependentResourcesAttributes } from "../../types/amplify-dependent-resources-ref";
-import * as rum from "@aws-cdk/aws-rum";
+import { Construct } from "constructs";
+import * as rum from "aws-cdk-lib/aws-rum";
 
 export class cdkStack extends cdk.Stack {
   constructor(
-    scope: cdk.Construct,
+    scope: Construct,
     id: string,
     props?: cdk.StackProps,
     amplifyResourceProps?: AmplifyHelpers.AmplifyResourceProps
@@ -36,9 +37,8 @@ export class cdkStack extends cdk.Stack {
     const identityPoolId = cdk.Fn.ref(
       retVal.auth.amplifycloudwatchrumauth.IdentityPoolId
     );
-    const guestRoleArn = `arn:aws:iam::${
-      cdk.Stack.of(this).account
-    }:role/amplify-amplifycloudwatchrum-unauthRole`;
+    const guestRoleArn = `arn:aws:iam::${cdk.Stack.of(this).account
+      }:role/amplify-amplifycloudwatchrum-unauthRole`;
     const myFunctionArn = cdk.Fn.ref(retVal.function.cfncustomfn.Arn);
 
     // Create a CloudWatch RUM appMonitor

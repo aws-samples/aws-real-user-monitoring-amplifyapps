@@ -1,10 +1,10 @@
-const fs = require("fs");
-const path = require("path");
-const parameters = JSON.parse(fs.readFileSync(0, { encoding: "utf8" }));
+import { readFileSync } from "fs";
+import { join } from "path";
+const parameters = JSON.parse(readFileSync(0, { encoding: "utf8" }));
 
 const amplifyMetaFile = JSON.parse(
-  fs.readFileSync(
-    path.join(
+  readFileSync(
+    join(
       parameters.data.amplify.environment.projectPath,
       "amplify",
       "backend",
@@ -18,7 +18,7 @@ const { custom, providers } = amplifyMetaFile;
 const { cloudwatchrum } = custom;
 
 console.log(
-  "Copy/paste these values in public/index.html with CloudWatch RUM code snippet below"
+  "Copy/paste these values in index.html with CloudWatch RUM code snippet below"
 );
 
 console.log(`appMonitorId ${cloudwatchrum.output.AppMonitorId}`);

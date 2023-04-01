@@ -1,12 +1,12 @@
-const fs = require("fs");
-const path = require("path");
-const parameters = JSON.parse(fs.readFileSync(0, { encoding: "utf8" }));
+import { readFileSync, writeFileSync } from "fs";
+import { join } from "path";
+const parameters = JSON.parse(readFileSync(0, { encoding: "utf8" }));
 
-const CWR_SCRIPT_VERSION = "1.2.1";
+const CWR_SCRIPT_VERSION = "1.13.6";
 
 const amplifyMetaFile = JSON.parse(
-  fs.readFileSync(
-    path.join(
+  readFileSync(
+    join(
       parameters.data.amplify.environment.projectPath,
       "amplify",
       "backend",
@@ -23,23 +23,22 @@ const appMonitorGuestRoleArn = cloudwatchrum.output.GuestRoleArn;
 const appMonitoridentityPoolId = cloudwatchrum.output.IdentityPoolId;
 const awsRegion = providers.awscloudformation.Region;
 
-fs.writeFileSync(
-  path.join(
-    parameters.data.amplify.environment.projectPath,
-    "public",
-    "index.html"
-  ),
+writeFileSync(
+  join(parameters.data.amplify.environment.projectPath, "index.html"),
   `<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Web site created using create-react-app" />
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <meta name="description" content="Amazon CloudWatch RUM x AWS Amplify" />
   <title>Amazon CloudWatch RUM x AWS Amplify</title>
+  <script>
+    if (global === undefined) {
+      var global = window;
+    }
+  </script>
   <script>
   (function (n, i, v, r, s, c, x, z) {
     x = window.AwsRumClient = { q: [], n: n, i: i, v: v, r: r, c: c };
@@ -68,10 +67,9 @@ fs.writeFileSync(
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
 </body>
 
 </html>`
 );
-console.log(
-  "Successfully updated public/index.html with CloudWatch RUM code snippet"
-);
+console.log("Successfully updated index.html with CloudWatch RUM code snippet");

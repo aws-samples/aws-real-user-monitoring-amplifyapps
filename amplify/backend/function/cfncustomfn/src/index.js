@@ -1,6 +1,6 @@
 const { Logger } = require("@aws-lambda-powertools/logger");
 const response = require("./cfn-response");
-const { RUM } = require("aws-sdk");
+const { RUMClient, GetAppMonitorCommand } = require("@aws-sdk/client-rum");
 
 const MAX_RETRIES = 5;
 
@@ -8,7 +8,7 @@ const logger = new Logger({
   serviceName: "appMonitorIdRetrieveService",
   logLevel: "DEBUG",
 });
-const client = new RUM();
+const client = new RUMClient();
 
 /**
  * @type {import('@types/aws-lambda').CloudFormationCustomResourceHandler}
@@ -54,12 +54,12 @@ exports.handler = async (event, context) => {
 
       try {
         const { projectName, envName } = event.ResourceProperties;
-        const res = await client
-          .getAppMonitor({
+        const res = await client.send(
+          new GetAppMonitorCommand({
             Name: `app-monitor-${projectName}-${envName}`,
           })
-          .promise();
-        appMonitorId = res.AppMonitor.Id;
+        );
+        appMonitorId = res?.AppMonitor?.Id;
       } catch (err) {
         logger.error(err);
         const waitMs = 1000 * retryIdx;
