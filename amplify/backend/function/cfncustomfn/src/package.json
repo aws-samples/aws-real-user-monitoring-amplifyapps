@@ -9,6 +9,6 @@
   },
   "dependencies": {
     "@aws-lambda-powertools/logger": "^1.7.0",
-    "@aws-sdk/client-rum": "^3.348.0"
+    "@aws-sdk/client-rum": "^3.369.0"
   }
 }
