@@ -4,7 +4,7 @@ When you launch a web application to users globally, you want to be able to moni
 
 During re:Invent 2021, AWS announced [Amazon CloudWatch Real-User Monitoring](https://aws.amazon.com/blogs/aws/cloudwatch-rum/) (RUM) for web applications. The CloudWatch RUM service enables you to collect, view, and analyze client-side data about your web application performance from actual user sessions in near real time. Application Developers and DevOps engineers can use this data to quickly identify and debug client-side issues to optimize end user experience. To get started, you simply generate a JavaScript snippet for your application by creating a RUM app monitor. This snippet is added to the header section in the HTML of your application. As users interact with your application, the RUM web client will collect and send data about the session to CloudWatch RUM for visualization and analysis.
 
-> [!Note}
+> [!Note]
 > This sample was originally published on the AWS Front-End Web & Mobile blog in the post [Implementing Real User Monitoring of Amplify Application using Amazon CloudWatch RUM](https://aws.amazon.com/blogs/mobile/implementing-real-user-monitoring-of-amplify-application-using-amazon-cloudwatch-rum/). The original version used the AWS Amplify CLI to create the custom resource. The current version uses Amplify Gen 2 instead.
 
 In this sample, we'll demonstrate how to integrate AWS Amplify Gen 2 with Amazon CloudWatch RUM. We'll instrument a simple React application with the CloudWatch RUM JavaScript snippet and create a custom resource in Amplify using AWS CDK (Cloud Development Kit) to configure the CloudWatch RUM service. The custom resource will create the necessary resources in AWS to enable the CloudWatch RUM service for the application.
