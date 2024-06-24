@@ -13,6 +13,22 @@
     }
   </script>
   <!-- Insert CloudWatch RUM script tag here -->
+  <script>
+    (function (n, i, v, r, s, c, u, x, z) { x = window.AwsRumClient = { q: [], n: n, i: i, v: v, r: r, c: c, u: u }; window[n] = function (c, p) { x.q.push({ c: c, p: p }); }; z = document.createElement('script'); z.async = true; z.src = s; document.head.insertBefore(z, document.getElementsByTagName('script')[0]); })(
+      'cwr',
+      '9f351e88-5c0e-4d78-81ce-2d48442a308f',
+      '1.0.0',
+      'eu-west-1',
+      'https://client.rum.us-east-1.amazonaws.com/1.18.0/cwr.js',
+      {
+        sessionSampleRate: 1,
+        identityPoolId: 'eu-west-1:fc9e1f42-7289-43c3-a2d2-ee24b6d22f1e',
+        endpoint: 'https://dataplane.rum.eu-west-1.amazonaws.com',
+        telemetries: ["performance", "errors", "http"],
+        allowCookies: true,
+        enableXRay: true
+      });
+  </script>
 
 </head>
 

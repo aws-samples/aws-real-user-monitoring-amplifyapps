@@ -4,16 +4,21 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "vite",
+    "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@aws-lambda-powertools/logger": "^2.2.0",
+    "@aws-sdk/client-rum": "^3.600.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^3.1.0",
-    "vite": "^4.5.3"
+    "@aws-amplify/backend": "^1.0.3",
+    "@aws-amplify/backend-cli": "^1.0.4",
+    "@biomejs/biome": "^1.8.2",
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.3.1"
   }
 }
