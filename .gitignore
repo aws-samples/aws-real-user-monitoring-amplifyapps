@@ -55,3 +55,4 @@ amplifytools.xcconfig
 #amplify-do-not-edit-end
 
 .amplify
+amplify_outputs.json
