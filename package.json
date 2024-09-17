@@ -19,6 +19,6 @@
     "@aws-amplify/backend-cli": "^1.2.5",
     "@biomejs/biome": "^1.8.3",
     "@vitejs/plugin-react": "^4.3.1",
-    "vite": "^5.4.2"
+    "vite": "^5.4.6"
   }
 }
