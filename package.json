@@ -17,7 +17,7 @@
   "devDependencies": {
     "@aws-amplify/backend": "^1.2.0",
     "@aws-amplify/backend-cli": "^1.4.0",
-    "@biomejs/biome": "^1.9.2",
+    "@biomejs/biome": "^1.9.4",
     "@vitejs/plugin-react": "^4.3.1",
     "vite": "^5.4.8"
   }
