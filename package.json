@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@aws-lambda-powertools/logger": "^2.13.1",
+    "@aws-lambda-powertools/logger": "^2.15.0",
     "@aws-sdk/client-rum": "^3.738.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
