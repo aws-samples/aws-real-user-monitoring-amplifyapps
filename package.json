@@ -12,7 +12,7 @@
     "@aws-lambda-powertools/logger": "^2.15.0",
     "@aws-sdk/client-rum": "^3.777.0",
     "react": "^19.1.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@aws-amplify/backend": "^1.15.0",
