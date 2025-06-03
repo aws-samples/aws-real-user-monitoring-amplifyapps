@@ -15,7 +15,7 @@
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "@aws-amplify/backend": "^1.15.0",
+    "@aws-amplify/backend": "^1.16.1",
     "@aws-amplify/backend-cli": "^1.7.0",
     "@biomejs/biome": "^1.9.4",
     "@vitejs/plugin-react": "^4.5.0",
