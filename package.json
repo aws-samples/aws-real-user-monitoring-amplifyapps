@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@aws-lambda-powertools/logger": "^2.27.0",
-    "@aws-sdk/client-rum": "^3.858.0",
+    "@aws-sdk/client-rum": "^3.899.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.1"
   },
